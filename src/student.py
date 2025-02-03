@@ -2,8 +2,9 @@
 # https://stackoverflow.com/questions/492519/timeout-on-a-function-call
 
 from typing import Callable
+from types import ModuleType
+import inspect
 
-import sys
 import threading
 import _thread as thread
 
@@ -11,7 +12,7 @@ from datetime import datetime as dt
 
 class StudentFunction:
     '''
-    Class to run and report on an individual function
+    Class to run and store info about an individual function.
     '''
     __slots__ = (
         'fun',
@@ -22,8 +23,10 @@ class StudentFunction:
         'start_time',
         'stop_time',
         'runtime',
-        'clean_exit'
-    )
+        'clean_exit',
+        'interrupted'
+        )
+    
     def __init__(self,
                  fun: Callable,
                  timeout_secs: float = None,
@@ -42,28 +45,74 @@ class StudentFunction:
         '''
         def interrupt() -> None:
             '''
-            Sends a KeyboardInterrupt to the main thread.
+            Sends a KeyboardInterrupt to the main thread and sets self.interrupted to True.
             Not guaranteed to work on all systems or in all cases!
             '''
+            self.interrupted = True
             print(f'Interrupt sent when {self.fun.__name__} ran more than {self.timeout_secs} secs.', flush=True)
             thread.interrupt_main()
             return
         
+        # Function has not yet been interrupted nor exited cleanly
+        self.interrupted = False
         self.clean_exit = False
+
+        # Start the timer if requested
         if self.timeout_secs:
             timer = threading.Timer(self.timeout_secs, interrupt)
             timer.start()
         try:
+            # Record the start time and run the function
             self.start_time = dt.now()
             self.result = self.fun(*self.args, **self.kwargs)
+            
+            # Function exited cleanly (perhaps! If it caught and ignored an interrupt it did not)
             self.clean_exit = True
         except KeyboardInterrupt:
             self.result = f'Error: Timed out after {self.timeout_secs} secs.'
         except Exception as e:
             self.result = f'Error: {e}'
         finally:
+            # [_] TEMP flag for silenced interrupts
+            if self.interrupted:
+                self.clean_exit = float('nan')
+
+            # Record the stop and runtimes
             self.stop_time = dt.now()
             self.runtime = (self.stop_time - self.start_time)
+            # Cancel the pending interrupt
             if self.timeout_secs:
                 timer.cancel()
         return
+    
+# class StudentAssignment:
+#     '''
+#     A collection of StudentFunctions that can
+#     output a summary (no grade yet).
+#     '''
+#     def __init__(self, 
+#                  student_code: ModuleType,
+#                  professor: Professor
+#                  ):
+#         self.student_code = student_code
+#         self.professor = professor
+
+#         self.funs = {}
+#         return
+    
+#     def load_functions(self) -> None:
+#         for name, obj in inspect.getmembers(self.student_code, predicate=inspect.isfunction):
+#             self.funs[name] = {}
+#             self.funs[name]['fun'] = obj
+#         return
+    
+#     def evaulate_fun(self, 
+#                      question_id: str
+#                      ) -> None:
+#         timeout_secs, args, kwargs = self.professor.get_params(question_id)
+#         return
+
+#     def get_results(self):
+
+#         return
+
