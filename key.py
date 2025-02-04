@@ -1,8 +1,10 @@
+from typing import Callable
+
 questions = {}
 
 class Question:
     def __init__(self,
-                 fun: callable,
+                 fun: Callable,
                  args: tuple = None,
                  kwargs: dict = None
                  ):

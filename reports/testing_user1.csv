@@ -1,0 +1,4 @@
+Args,Kwargs,Output,Expected,Match,Runtime,CleanExit
+(),{'n': 2},3,3,True,0:00:00.000004,True
+"(3, 4)",{},5,5,True,0:00:00.000003,True
+(),{},42,42,True,0:00:00.000003,True

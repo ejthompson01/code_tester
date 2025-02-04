@@ -84,35 +84,3 @@ class StudentFunction:
             if self.timeout_secs:
                 timer.cancel()
         return
-    
-# class StudentAssignment:
-#     '''
-#     A collection of StudentFunctions that can
-#     output a summary (no grade yet).
-#     '''
-#     def __init__(self, 
-#                  student_code: ModuleType,
-#                  professor: Professor
-#                  ):
-#         self.student_code = student_code
-#         self.professor = professor
-
-#         self.funs = {}
-#         return
-    
-#     def load_functions(self) -> None:
-#         for name, obj in inspect.getmembers(self.student_code, predicate=inspect.isfunction):
-#             self.funs[name] = {}
-#             self.funs[name]['fun'] = obj
-#         return
-    
-#     def evaulate_fun(self, 
-#                      question_id: str
-#                      ) -> None:
-#         timeout_secs, args, kwargs = self.professor.get_params(question_id)
-#         return
-
-#     def get_results(self):
-
-#         return
-
