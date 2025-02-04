@@ -14,8 +14,10 @@ from src.student import StudentFunction
 import key
 
 PATH_LOGS = 'logs'
-PATH_REPORTS = 'reports'
 PATH_LOG = os.path.join(PATH_LOGS, 'log')
+
+PATH_REPORTS = 'reports'
+PATH_SUMMARY = os.path.join(PATH_REPORTS, '_summary.csv')
 
 # For identifying code to skip/include
 KEY_SKIP = '_'
@@ -117,6 +119,7 @@ class Professor:
                       ) -> pd.DataFrame:
         # Initialize report
         student_report = pd.DataFrame(index=self.question_ids, columns=COLS)
+        student_report.index.name = 'Question'
         # Gather student functions
         student_funs = {}
         for name, obj in inspect.getmembers(self.students[student_name], predicate=inspect.isfunction):
@@ -165,11 +168,20 @@ class Professor:
     
     def check_students(self) -> None:
         self.write_log('check_students started')
+
+        self.summary = pd.DataFrame(index=self.student_names, 
+                                    columns=self.question_ids
+                                    )
+        self.summary.index.name = 'Student'
         for student in self.student_names:
             self.write_log(f'Started checking code for: {student}')
             report = self.check_student(student)
-            report.to_csv(os.path.join(PATH_REPORTS, f'{self.assignment_name}_{student}.csv'), index=False)
+            report.to_csv(os.path.join(PATH_REPORTS, f'{self.assignment_name}_{student}.csv'))
+            for qid in self.question_ids:
+                self.summary.loc[student, qid] = report.loc[qid, COL_MATCH]
             self.write_log(f'Finished checking code for: {student}')
+
+        self.summary.to_csv(PATH_SUMMARY)
         self.write_log('check_students finished')
         return
 

@@ -1,0 +1,20 @@
+2025-02-04 13:58:52.516056::Process initialized
+2025-02-04 13:58:52.517182::Questions in key: 3
+2025-02-04 13:58:52.518089::Submissions found: 3
+2025-02-04 13:58:52.518947::check_students started
+2025-02-04 13:58:52.520391::Started checking code for: user1
+2025-02-04 13:58:52.522064::q1 for user1 found!
+2025-02-04 13:58:52.523708::q2 for user1 found!
+2025-02-04 13:58:52.524794::q3 for user1 found!
+2025-02-04 13:58:52.527520::Finished checking code for: user1
+2025-02-04 13:58:52.528380::Started checking code for: user2
+2025-02-04 13:58:52.529966::q1 for user2 found!
+2025-02-04 13:58:52.584624::q2 for user2 found!
+2025-02-04 13:58:52.585994::q3 for user2 found!
+2025-02-04 13:58:52.588305::Finished checking code for: user2
+2025-02-04 13:58:52.588938::Started checking code for: user3
+2025-02-04 13:58:52.590592::q1 for user3 found!
+2025-02-04 13:58:52.592855::q2 for user3 found!
+2025-02-04 13:58:52.594969::q3 for user3 was NOT found!
+2025-02-04 13:58:52.598711::Finished checking code for: user3
+2025-02-04 13:58:52.600915::check_students finished
