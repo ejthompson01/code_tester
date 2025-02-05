@@ -1,4 +1,3 @@
-
 from typing import Callable
 from types import ModuleType
 
@@ -77,7 +76,7 @@ class Professor:
             self.results[qid].run_fun()
             
             # HELD FIXED FOR TESTING [_]
-            self.timeouts[qid] = 5
+            self.timeouts[qid] = 1
 
         self.question_ids = list(self.results.keys())
         self.question_ids.sort()
@@ -150,7 +149,7 @@ class Professor:
                     ]
                 
                 if prepared_function.interrupted:
-                    self.write_log(f'{qid} for {student_name} was interrupted.')
+                    self.write_log(f'{qid} for {student_name} triggered an interrupt.')
 
             else:
                 self.write_log(f'{qid} for {student_name} was NOT found!')
@@ -158,8 +157,8 @@ class Professor:
                     '',
                     '',
                     'Code not found!',
-                    '',
-                    '',
+                    self.results[qid].result,
+                    False,
                     '',
                     ''
                     ]

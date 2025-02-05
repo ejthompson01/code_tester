@@ -41,7 +41,7 @@ class StudentFunction:
     
     def run_fun(self) -> None:
         '''
-        Run the function and record details (see __slots__ for now)
+        Run the function and record details (see __slots__ for now)[_]
         '''
         def interrupt() -> None:
             '''
@@ -66,17 +66,17 @@ class StudentFunction:
             self.start_time = dt.now()
             self.result = self.fun(*self.args, **self.kwargs)
             
-            # Function exited cleanly (perhaps! If it caught and ignored an interrupt it did not)
+            # Function exited cleanly 
+            # (perhaps! More specifically, the line below ran. 
+            #  We check later if the interrupted flag was set)
             self.clean_exit = True
         except KeyboardInterrupt:
             self.result = f'Error: Timed out after {self.timeout_secs} secs.'
         except Exception as e:
             self.result = f'Error: {e}'
         finally:
-            # [_] TEMP flag for silenced interrupts
             if self.interrupted:
-                self.clean_exit = float('nan')
-
+                self.clean_exit = False
             # Record the stop and runtimes
             self.stop_time = dt.now()
             self.runtime = (self.stop_time - self.start_time)

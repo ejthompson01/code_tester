@@ -1,4 +1,8 @@
-Student,q1,q2,q3
-user1,True,True,True
-user2,False,True,True
-user3,True,True,
+Student,q1,q2,q3,q4
+user1,True,True,True,True
+user2,False,True,True,True
+user3,True,True,False,True
+user4,True,False,True,True
+user5,True,True,False,True
+user6,True,True,False,True
+user7,True,True,False,True
