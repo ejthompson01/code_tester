@@ -32,3 +32,5 @@ The purpose of this code is to allow users to submit .py files containing functi
 
 - how lists/tuples/etc are ordered. if we want to extend this to other things, e.g., dbs, consider optional sorting issues like those seen before.
 
+- write a compare() method to allow for additional/future flexibility.
+

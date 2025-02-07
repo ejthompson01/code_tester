@@ -1,0 +1,50 @@
+2025-02-05 11:26:35.470579::Process initialized
+2025-02-05 11:26:35.471746::Questions in key: 4
+2025-02-05 11:26:35.472845::Submissions found: 7
+2025-02-05 11:26:35.473884::check_students started
+2025-02-05 11:26:35.476797::Started checking code for: user1
+2025-02-05 11:26:35.479341::q1 for user1 found!
+2025-02-05 11:26:35.481433::q2 for user1 found!
+2025-02-05 11:26:35.482958::q3 for user1 found!
+2025-02-05 11:26:35.484537::q4 for user1 found!
+2025-02-05 11:26:35.491050::Finished checking code for: user1
+2025-02-05 11:26:35.492410::Started checking code for: user2
+2025-02-05 11:26:35.494913::q1 for user2 found!
+2025-02-05 11:26:35.496390::q2 for user2 found!
+2025-02-05 11:26:35.498667::q3 for user2 found!
+2025-02-05 11:26:35.500362::q4 for user2 found!
+2025-02-05 11:26:35.503567::Finished checking code for: user2
+2025-02-05 11:26:35.504916::Started checking code for: user3
+2025-02-05 11:26:35.506830::q1 for user3 found!
+2025-02-05 11:26:35.508285::q2 for user3 found!
+2025-02-05 11:26:35.509759::q3 for user3 was NOT found!
+2025-02-05 11:26:35.510953::q4 for user3 found!
+2025-02-05 11:26:35.513719::Finished checking code for: user3
+2025-02-05 11:26:35.515085::Started checking code for: user4
+2025-02-05 11:26:35.516776::q1 for user4 found!
+2025-02-05 11:26:35.518524::q2 for user4 found!
+2025-02-05 11:26:35.520102::q3 for user4 found!
+2025-02-05 11:26:35.521616::q4 for user4 found!
+2025-02-05 11:26:35.524365::Finished checking code for: user4
+2025-02-05 11:26:35.525071::Started checking code for: user5
+2025-02-05 11:26:35.526906::q1 for user5 found!
+2025-02-05 11:26:35.528009::q2 for user5 found!
+2025-02-05 11:26:35.529298::q3 for user5 found!
+2025-02-05 11:26:36.582586::q3 for user5 triggered an interrupt.
+2025-02-05 11:26:36.583768::q4 for user5 found!
+2025-02-05 11:26:36.587478::Finished checking code for: user5
+2025-02-05 11:26:36.588673::Started checking code for: user6
+2025-02-05 11:26:36.590893::q1 for user6 found!
+2025-02-05 11:26:36.592405::q2 for user6 found!
+2025-02-05 11:26:36.594076::q3 for user6 found!
+2025-02-05 11:26:37.742234::q3 for user6 triggered an interrupt.
+2025-02-05 11:26:37.743345::q4 for user6 found!
+2025-02-05 11:26:37.746277::Finished checking code for: user6
+2025-02-05 11:26:37.747274::Started checking code for: user7
+2025-02-05 11:26:37.749449::q1 for user7 found!
+2025-02-05 11:26:37.750881::q2 for user7 found!
+2025-02-05 11:26:37.752800::q3 for user7 found!
+2025-02-05 11:26:38.823507::q3 for user7 triggered an interrupt.
+2025-02-05 11:26:38.824671::q4 for user7 found!
+2025-02-05 11:26:38.827871::Finished checking code for: user7
+2025-02-05 11:26:38.829452::check_students finished
