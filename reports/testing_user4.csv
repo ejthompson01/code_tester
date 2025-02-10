@@ -1,5 +1,5 @@
 Question,Args,Kwargs,Output,Expected,Match,Runtime,CleanExit
-q1,(),{'n': 2},3,3,True,0:00:00.000004,True
-q2,"(3, 4)",{},Error: q2() takes 1 positional argument but 2 were given,5,False,0:00:00.000010,False
-q3,(),{},42,42,True,0:00:00.000005,True
+q1,(),{'n': 2},3,3,True,0:00:00.000002,True
+q2,"(3, 4)",{},Error: q2() takes 1 positional argument but 2 were given,5,False,0:00:00.000008,False
+q3,(),{},42,42,True,0:00:00.000001,True
 q4,"(42,)",{},"(43, 'n^2 is 1764')","(43, 'n^2 is 1764')",True,0:00:00.000003,True

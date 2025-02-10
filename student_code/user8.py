@@ -1,4 +1,4 @@
-# Has incorrect syntax which should error out on import
+# has incorrect syntax in q4
 
 def q1(n: int) -> int:
     return n+1

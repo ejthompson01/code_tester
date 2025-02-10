@@ -3,14 +3,32 @@ from typing import Callable
 questions = {}
 
 class Question:
+    '''
+    Stores a function to be run later along with it's 
+    intended positional and keyword arguments.
+
+    Arguments
+        fun: The function
+        args: A tuple that will be passed positionally
+        kwargs: A dictionary that will be passed by keyword
+        timeout_secs:
+            - None: The timeout will be the professor's runtime multiplied
+                    by DFLT_TIMEOUT_MULT (defined in src/professor.py).
+                    This is the default.
+            - 0: No timeout will be implemented
+            - Any other number specifies the number of seconds to wait before
+              attempting to interrupt the student's code
+    '''
     def __init__(self,
                  fun: Callable,
                  args: tuple = None,
-                 kwargs: dict = None
+                 kwargs: dict = None,
+                 timeout_secs: float = None
                  ):
         self.fun = fun
         self.args = args or ()
         self.kwargs = kwargs or {}
+        self.timeout_secs = timeout_secs
         return
 
 # Question 1: Write a function that takes an integer as input and returns its successor

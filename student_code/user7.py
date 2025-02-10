@@ -1,4 +1,4 @@
-# Everything correct
+# q3 runs an infinite loop with an inner try/catch
 
 def q1(n: int) -> int:
     return n+1

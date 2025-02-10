@@ -12,6 +12,10 @@ from src.student import StudentFunction
 
 import key
 
+# If a question has timeout_secs = None, then
+# the professor's runtime is multiplied by this value
+DFLT_TIMEOUT_MULT = 10
+
 PATH_LOGS = 'logs'
 PATH_LOG = os.path.join(PATH_LOGS, 'log')
 
@@ -45,8 +49,7 @@ def timestamp() -> str:
         t = t.replace(char, '-')
     return t
 
-class Professor:
-    DFLT_TIMEOUT_MULT = 2
+class Professor: 
     
     #__slots__ = ()
     
@@ -69,14 +72,15 @@ class Professor:
     
     def init_key(self):
         self.results: dict[str, StudentFunction] = {}
-        self.timeouts: dict[str, float] = {}
 
         for qid, q in key.questions.items():
-            self.results[qid] = StudentFunction(q.fun, None, q.args, q.kwargs)
+            self.results[qid] = StudentFunction(q.fun, q.args, q.kwargs, None)
             self.results[qid].run_fun()
-            
-            # HELD FIXED FOR TESTING [_]
-            self.timeouts[qid] = 1
+
+            # Determine the timeout
+            if self.results[qid].timeout_secs is None:
+                self.results[qid].timeout_secs = \
+                    self.results[qid].runtime.total_seconds()*DFLT_TIMEOUT_MULT
 
         self.question_ids = list(self.results.keys())
         self.question_ids.sort()
@@ -131,13 +135,15 @@ class Professor:
 
                 args = self.results[qid].args
                 kwargs = self.results[qid].kwargs
+                timeout_secs = self.results[qid].timeout_secs
 
                 prepared_function = StudentFunction(student_funs[qid], 
-                                                    timeout_secs=self.timeouts[qid],
                                                     args=args,
-                                                    kwargs=kwargs
+                                                    kwargs=kwargs,
+                                                    timeout_secs=timeout_secs
                                                     )
                 prepared_function.run_fun()
+                
                 details = [
                     args,
                     kwargs,

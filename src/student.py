@@ -2,8 +2,8 @@
 # https://stackoverflow.com/questions/492519/timeout-on-a-function-call
 
 from typing import Callable
-from types import ModuleType
-import inspect
+#from types import ModuleType
+#import inspect
 
 import threading
 import _thread as thread
@@ -29,14 +29,14 @@ class StudentFunction:
     
     def __init__(self,
                  fun: Callable,
-                 timeout_secs: float = None,
                  args: tuple = None,
-                 kwargs: dict = None
+                 kwargs: dict = None,
+                 timeout_secs: float = None
                  ):
         self.fun = fun
-        self.timeout_secs = timeout_secs
         self.args = args or ()
         self.kwargs = kwargs or {}
+        self.timeout_secs = timeout_secs
         return
     
     def run_fun(self) -> None:
@@ -46,7 +46,8 @@ class StudentFunction:
         def interrupt() -> None:
             '''
             Sends a KeyboardInterrupt to the main thread and sets self.interrupted to True.
-            Not guaranteed to work on all systems or in all cases!
+            The interrupt is not guaranteed to work in all cases/systems, but the self.interrupted
+            flag *should* be reliably set.
             '''
             self.interrupted = True
             print(f'Interrupt sent when {self.fun.__name__} ran more than {self.timeout_secs} secs.', flush=True)
