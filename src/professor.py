@@ -111,8 +111,10 @@ class Professor:
 
             # Determine the timeout
             if self.results[qid].timeout_secs is None:
-                self.results[qid].timeout_secs = \
-                    self.results[qid].runtime.total_seconds()*DFLT_TIMEOUT_MULT
+                t = self.results[qid].runtime.total_seconds()*DFLT_TIMEOUT_MULT
+                # Minimum of 1 second, no negotiation!
+                t = max(t, 1)
+                self.results[qid].timeout_secs = t
 
         # Keep a sorted list of question id's
         self.question_ids = list(self.results.keys())
