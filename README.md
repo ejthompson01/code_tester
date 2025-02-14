@@ -16,7 +16,7 @@ This code does contain a timeout feature which will attempt to gracefully interr
 
 This repository is already initialized with functional examples; no setup is necessary aside from making sure that you have Python and required libraries installed (this project is managed using [uv](https://docs.astral.sh/uv/), please see [their website](https://docs.astral.sh/uv/) for more information).
 
-For those who wish to just see the code work, all that is needed is:
+For those who wish to just see the code work, all that is needed is to first clone the repository, and then:
 
 ```python
 from src import professor
