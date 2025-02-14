@@ -7,7 +7,10 @@ class Question:
     Stores a function to be run later along with it's 
     intended positional and keyword arguments.
 
-    Arguments
+    See details in the professor.Professor class regarding
+    how timeouts are handled.
+
+    Arguments:
         fun: The function
         args: A tuple that will be passed positionally
         kwargs: A dictionary that will be passed by keyword
@@ -31,7 +34,7 @@ class Question:
         self.timeout_secs = timeout_secs
         return
 
-# Question 1: Write a function that takes an integer as input and returns its successor
+# Question 1: Write a function that takes an integer as input and returns its successor.
 def q1(n: int) -> int:
     '''
     Add one.
@@ -42,7 +45,7 @@ questions['q1'] = \
              kwargs={'n': 2}
              )
 
-# Question 2: Write a function that takes integers n,m as input and returns n^2-m
+# Question 2: Write a function that takes integers n,m as input and returns n^2-m.
 def q2(n: int, m: int) -> int:
     '''
     Square n and subtract m
@@ -62,7 +65,7 @@ def q3() -> 42:
 questions['q3'] = \
     Question(q3)
 
-# Question 4: Return multiple outputs as a tuple
+# Question 4: Return multiple outputs as a tuple.
 def q4(n: int) -> tuple[int, str]:
     return n+1, f'n^2 is {n**2}'
 questions['q4'] = \
