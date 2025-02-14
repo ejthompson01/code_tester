@@ -20,7 +20,7 @@ For those who wish to just see the code work, all that is needed is to first clo
 
 ```python
 from src import professor
-prof = professor(assignment_name='yourAssignmentName')
+prof = professor.Professor(assignment_name='yourAssignmentName')
 prof.check_students()
 ```
 
