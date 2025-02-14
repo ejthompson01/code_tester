@@ -1,4 +1,4 @@
-## code_tester
+## code_tester: Overview
 
 The purpose of this code is to automate comparisons of the output of user-submitted code to the output of an "answer key" and provide useful data about these comparisons.
 
